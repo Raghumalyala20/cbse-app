@@ -30,6 +30,8 @@ export default function Home() {
     setSelectedConcept(concept);
     if (concept.videos.length > 0) {
       setActiveVideo(concept.videos[0]);
+    } else {
+      setActiveVideo(null);
     }
   };
 
@@ -176,7 +178,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-slate-100 p-4 text-center text-slate-400 text-sm">
-        <p>CBSE Learning Hub • v1.2</p>
+        <p>CBSE Learning Hub • v1.3</p>
       </footer>
     </div>
   );

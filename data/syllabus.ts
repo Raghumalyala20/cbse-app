@@ -53,7 +53,7 @@ export const syllabus: Grade[] = [
                 id: "irrational-nums",
                 title: "Irrational Numbers",
                 videos: [
-                  { id: "v2", title: "Irrational Numbers Explained", url: "IueVrMlmQ2I" }
+                  { id: "v2", title: "Irrational Numbers Explained", url: "1N-mG0lTf6I" }
                 ]
               },
               {
