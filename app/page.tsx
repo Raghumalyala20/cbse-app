@@ -176,7 +176,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-slate-100 p-4 text-center text-slate-400 text-sm">
-        <p>CBSE Learning Hub • v1.1</p>
+        <p>CBSE Learning Hub • v1.2</p>
       </footer>
     </div>
   );
