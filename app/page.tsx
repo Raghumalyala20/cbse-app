@@ -174,6 +174,10 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      <footer className="bg-slate-100 p-4 text-center text-slate-400 text-sm">
+        <p>CBSE Learning Hub • v1.1</p>
+      </footer>
     </div>
   );
 }
