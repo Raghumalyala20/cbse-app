@@ -46,14 +46,14 @@ export const syllabus: Grade[] = [
                 id: "intro-num-sys",
                 title: "Introduction to Number Systems",
                 videos: [
-                  { id: "v1", title: "Number Systems - Introduction", url: "Qj2m3a8wRj8" }
+                  { id: "v1", title: "Number Systems - Introduction", url: "IueVrMlmQ2I" }
                 ]
               },
               {
                 id: "irrational-nums",
                 title: "Irrational Numbers",
                 videos: [
-                  { id: "v2", title: "Irrational Numbers Explained", url: "Qj2m3a8wRj8" }
+                  { id: "v2", title: "Irrational Numbers Explained", url: "IueVrMlmQ2I" }
                 ]
               },
               {
@@ -149,7 +149,7 @@ export const syllabus: Grade[] = [
                 id: "matter-nature",
                 title: "Physical Nature of Matter",
                 videos: [
-                  { id: "v3", title: "Matter in Our Surroundings - Full Chapter", url: "b-3k7f_7jGE" }
+                  { id: "v3", title: "Matter in Our Surroundings - Full Chapter", url: "eGf9Vv4vUvU" }
                 ]
               },
               { id: "states", title: "States of Matter", videos: [] },

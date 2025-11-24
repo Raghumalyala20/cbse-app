@@ -21,6 +21,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId }) => {
             autoplay: 1,
             modestbranding: 1,
             rel: 0, // Don't show related videos from other channels
+            playsinline: 1, // Play inline on mobile
+            fs: 0, // Disable fullscreen to keep user in app
+            origin: typeof window !== 'undefined' ? window.location.origin : undefined,
         },
     };
 
