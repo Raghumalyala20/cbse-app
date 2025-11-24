@@ -151,7 +151,7 @@ export default function Home() {
                         {selectedConcept.title} • {selectedChapter.title}
                       </p>
                     </div>
-                    <VideoPlayer videoId={activeVideo.url} />
+                    <VideoPlayer key={activeVideo.url} videoId={activeVideo.url} />
                     <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-sm text-yellow-800">
                       <strong>Note:</strong> This video is curated for educational purposes.
                     </div>

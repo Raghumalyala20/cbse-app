@@ -46,7 +46,7 @@ export const syllabus: Grade[] = [
                 id: "intro-num-sys",
                 title: "Introduction to Number Systems",
                 videos: [
-                  { id: "v1", title: "Number Systems - Introduction", url: "IueVrMlmQ2I" }
+                  { id: "v1", title: "Number Systems - Full Chapter Explanation", url: "IueVrMlmQ2I" }
                 ]
               },
               {
@@ -149,7 +149,7 @@ export const syllabus: Grade[] = [
                 id: "matter-nature",
                 title: "Physical Nature of Matter",
                 videos: [
-                  { id: "v3", title: "Matter in Our Surroundings - Full Chapter", url: "eGf9Vv4vUvU" }
+                  { id: "v3", title: "Matter in Our Surroundings - Full Chapter (One Shot)", url: "FkuQHxIZNFs" }
                 ]
               },
               { id: "states", title: "States of Matter", videos: [] },
