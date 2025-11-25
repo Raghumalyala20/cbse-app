@@ -1,66 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
     try {
-        const { question, syllabusContext } = await req.json();
-
-        // Get API key from environment variable
+        const { question, syllabusContext } = await request.json();
         const apiKey = process.env.GEMINI_API_KEY;
-
         if (!apiKey) {
-            return NextResponse.json({
-                error: 'API key not configured',
-                useFallback: true
-            }, { status: 200 });
+            return NextResponse.json({ useFallback: true, error: 'No API key' }, { status: 200 });
         }
-
-        // Call Gemini API
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `You are a helpful tutor for CBSE Class 9 students. Answer the following question based on the syllabus context provided. Keep answers concise, clear, and educational.
-
-Question: ${question}
-
-Syllabus Context (use this to answer if relevant):
-${syllabusContext}
-
-If the question is not in the syllabus, provide a brief, helpful explanation anyway, but mention it's not part of Class 9 CBSE syllabus.`
-                        }]
-                    }],
-                    generationConfig: {
-                        temperature: 0.7,
-                        maxOutputTokens: 500,
-                    }
-                })
-            }
-        );
-
-        if (!response.ok) {
-            // If quota exceeded or API error, signal to use fallback
-            return NextResponse.json({
-                error: 'API quota exceeded or error',
-                useFallback: true
-            }, { status: 200 });
-        }
-
-        const data = await response.json();
-        const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response from AI';
-
-        return NextResponse.json({ answer, source: 'gemini' });
-
-    } catch (error) {
-        console.error('Gemini API error:', error);
-        return NextResponse.json({
-            error: 'API error',
-            useFallback: true
-        }, { status: 200 });
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const prompt = `You are a helpful CBSE tutor. Answer the user's question using only the provided syllabus context. If the answer is not found, say you don't have information.\n\nSyllabus Context:\n${syllabusContext}`;
+        const result = await model.generateContent(prompt + '\n\nQuestion: ' + question);
+        const answer = await result.response.text();
+        return NextResponse.json({ answer, useFallback: false }, { status: 200 });
+    } catch (err) {
+        console.error('Chat API error:', err);
+        return NextResponse.json({ useFallback: true, error: String(err) }, { status: 200 });
     }
 }

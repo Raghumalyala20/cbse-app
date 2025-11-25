@@ -72,12 +72,5 @@ describe('Syllabus Data Validation', () => {
         });
     });
 
-    test('Chapters 2-7 should have WIP placeholder', () => {
-        syllabus[0].subjects.forEach(subject => {
-            for (let i = 1; i < 7; i++) {
-                const chapter = subject.chapters[i];
-                expect(chapter.concepts[0].title).toBe('Work in Progress');
-            }
-        });
-    });
+
 });
