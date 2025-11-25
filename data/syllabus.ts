@@ -6,6 +6,9 @@ import { chapter4 as mathCh4 } from './math/chapter4';
 import { chapter5 as mathCh5 } from './math/chapter5';
 import { chapter6 as mathCh6 } from './math/chapter6';
 import { chapter7 as mathCh7 } from './math/chapter7';
+import { chapter8Enhanced as mathCh8 } from './math/chapter8_enhanced';
+import { chapter9Enhanced as mathCh9 } from './math/chapter9_enhanced';
+import { chapter10Enhanced as mathCh10 } from './math/chapter10_enhanced';
 
 // Import Science chapters
 import { chapter1 as sciCh1 } from './science/chapter1';
@@ -15,6 +18,9 @@ import { chapter4 as sciCh4 } from './science/chapter4';
 import { chapter5 as sciCh5 } from './science/chapter5';
 import { chapter6 as sciCh6 } from './science/chapter6';
 import { chapter7 as sciCh7 } from './science/chapter7';
+import { chapter8Enhanced as sciCh8 } from './science/chapter8_enhanced';
+import { chapter9Enhanced as sciCh9 } from './science/chapter9_enhanced';
+import { chapter10Enhanced as sciCh10 } from './science/chapter10_enhanced';
 
 export interface Video {
   id: string;
@@ -93,124 +99,9 @@ export const syllabus: Grade[] = [
           mathCh5,
           mathCh6,
           mathCh7,
-          {
-            id: "quadrilaterals",
-            title: "Chapter 8: Quadrilaterals",
-            concepts: [
-              {
-                id: "quad-basics",
-                title: "Properties of Quadrilaterals",
-                videos: [{ id: "v1", title: "Quadrilaterals Full Chapter", url: "dQw4w9WgXcQ" }],
-                explanation: "A quadrilateral is a closed figure with four sides. The sum of all interior angles is 360°.",
-                keyPoints: [
-                  "Sum of angles = 360°",
-                  "Parallelogram: Opposite sides parallel and equal",
-                  "Rectangle: All angles 90°, opposite sides equal",
-                  "Square: All sides equal, all angles 90°",
-                  "Rhombus: All sides equal, opposite angles equal",
-                  "Trapezium: One pair of opposite sides parallel"
-                ],
-                diagrams: ["diagrams/quadrilateral_types.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "Find the fourth angle of a quadrilateral if three angles are 80°, 90°, and 100°.",
-                    solution: "Sum of angles = 360°. Fourth angle = 360° - (80° + 90° + 100°) = 360° - 270° = 90°"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex8.1-q1",
-                    exercise: "Exercise 8.1",
-                    questionNumber: 1,
-                    question: "The angles of a quadrilateral are in the ratio 3:5:9:13. Find all the angles.",
-                    solution: "Let angles be 3x, 5x, 9x, 13x\\nSum = 360°\\n3x + 5x + 9x + 13x = 360°\\n30x = 360°\\nx = 12°\\nAngles are: 36°, 60°, 108°, 156°",
-                    difficulty: "medium"
-                  },
-                  {
-                    id: "ex8.1-q2",
-                    exercise: "Exercise 8.1",
-                    questionNumber: 2,
-                    question: "If the diagonals of a parallelogram are equal, then show that it is a rectangle.",
-                    solution: "In a parallelogram, if diagonals are equal, opposite sides are equal and parallel. Equal diagonals imply all angles are 90°, making it a rectangle.",
-                    difficulty: "hard"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: "circles",
-            title: "Chapter 9: Circles",
-            concepts: [
-              {
-                id: "circle-basics",
-                title: "Circles and their Properties",
-                videos: [{ id: "v1", title: "Circles Full Chapter", url: "dQw4w9WgXcQ" }],
-                explanation: "A circle is the locus of all points equidistant from a fixed point called the center.",
-                keyPoints: [
-                  "Radius: Distance from center to any point on circle",
-                  "Diameter = 2 × Radius",
-                  "Chord: Line segment joining two points on circle",
-                  "Equal chords are equidistant from center",
-                  "Perpendicular from center to chord bisects the chord"
-                ],
-                diagrams: ["diagrams/circle_properties.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "If radius of a circle is 5 cm, find the length of a chord that is 3 cm from the center.",
-                    solution: "Using Pythagoras: chord/2 = √(5² - 3²) = √(25-9) = 4 cm. Chord length = 8 cm"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex9.1-q1",
-                    exercise: "Exercise 9.1",
-                    questionNumber: 1,
-                    question: "Fill in the blanks: The center of a circle lies in _____ of the circle.",
-                    solution: "The center of a circle lies in **interior** of the circle.",
-                    difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: "heron",
-            title: "Chapter 10: Heron's Formula",
-            concepts: [
-              {
-                id: "heron-formula",
-                title: "Area using Heron's Formula",
-                videos: [{ id: "v1", title: "Heron's Formula", url: "dQw4w9WgXcQ" }],
-                explanation: "Heron's formula is used to find the area of a triangle when all three sides are known.",
-                keyPoints: [
-                  "Semi-perimeter s = (a + b + c)/2",
-                  "Area = √[s(s-a)(s-b)(s-c)]",
-                  "Useful when height is not given"
-                ],
-                diagrams: ["diagrams/herons_formula.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "Find area of triangle with sides 5cm, 6cm, 7cm",
-                    solution: "s = (5+6+7)/2 = 9\\nArea = √[9(9-5)(9-6)(9-7)] = √[9×4×3×2] = √216 = 6√6 cm²"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex10.1-q1",
-                    exercise: "Exercise 10.1",
-                    questionNumber: 1,
-                    question: "Find the area of a triangle with sides 3cm, 4cm, and 5cm using Heron's formula.",
-                    solution: "s = (3+4+5)/2 = 6\\nArea = √[6(6-3)(6-4)(6-5)] = √[6×3×2×1] = √36 = 6 cm²",
-                    difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          },
+          mathCh8,
+          mathCh9,
+          mathCh10,
           {
             id: "surface-areas",
             title: "Chapter 11: Surface Areas and Volumes",
@@ -296,112 +187,9 @@ export const syllabus: Grade[] = [
           sciCh5,
           sciCh6,
           sciCh7,
-          {
-            id: "force",
-            title: "Chapter 8: Force and Laws of Motion",
-            concepts: [
-              {
-                id: "newtons-laws",
-                title: "Newton's Laws of Motion",
-                videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
-                explanation: "Newton's three laws describe the relationship between force and motion.",
-                keyPoints: [
-                  "First Law (Inertia): Object remains at rest or in uniform motion unless acted upon by force",
-                  "Second Law: F = ma (Force = mass × acceleration)",
-                  "Third Law: For every action, there is equal and opposite reaction"
-                ],
-                diagrams: ["diagrams/newtons_laws.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "A force of 10N acts on a mass of 2kg. Find acceleration.",
-                    solution: "F = ma\\n10 = 2 × a\\na = 5 m/s²"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex8-q1",
-                    exercise: "Exercise 8",
-                    questionNumber: 1,
-                    question: "Which of the following has more inertia: a rubber ball or a stone of the same size?",
-                    solution: "A stone has more inertia because it has more mass than a rubber ball of the same size. Inertia depends on mass.",
-                    difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: "gravitation",
-            title: "Chapter 9: Gravitation",
-            concepts: [
-              {
-                id: "gravity",
-                title: "Universal Law of Gravitation",
-                videos: [{ id: "v1", title: "Gravitation", url: "dQw4w9WgXcQ" }],
-                explanation: "Every object in the universe attracts every other object with a force called gravity.",
-                keyPoints: [
-                  "F = G(m₁m₂)/r² where G = 6.67×10⁻¹¹ Nm²/kg²",
-                  "Weight = mass × g (g = 9.8 m/s² on Earth)",
-                  "Mass is constant, weight changes with location"
-                ],
-                diagrams: ["diagrams/gravitation.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "Find weight of 10kg object on Earth (g=10 m/s²)",
-                    solution: "Weight = mg = 10 × 10 = 100 N"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex9-q1",
-                    exercise: "Exercise 9",
-                    questionNumber: 1,
-                    question: "State the universal law of gravitation.",
-                    solution: "Every object in the universe attracts every other object with a force which is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. F = G(m₁m₂)/r²",
-                    difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: "work-energy",
-            title: "Chapter 10: Work and Energy",
-            concepts: [
-              {
-                id: "work-energy-def",
-                title: "Work and Energy",
-                videos: [{ id: "v1", title: "Work and Energy", url: "dQw4w9WgXcQ" }],
-                explanation: "Work is done when force causes displacement. Energy is the capacity to do work.",
-                keyPoints: [
-                  "Work = Force × Displacement × cos(θ)",
-                  "Kinetic Energy = ½mv²",
-                  "Potential Energy = mgh",
-                  "Law of Conservation of Energy: Energy cannot be created or destroyed"
-                ],
-                diagrams: ["diagrams/work_energy.png"],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "Find KE of 2kg object moving at 5 m/s",
-                    solution: "KE = ½mv² = ½ × 2 × 5² = 25 J"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex10-q1",
-                    exercise: "Exercise 10",
-                    questionNumber: 1,
-                    question: "A force of 7 N acts on an object. The displacement is 8 m in the direction of the force. What is the work done?",
-                    solution: "Work = Force × Displacement = 7 N × 8 m = 56 J",
-                    difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          },
+          sciCh8,
+          sciCh9,
+          sciCh10,
           {
             id: "sound",
             title: "Chapter 11: Sound",
