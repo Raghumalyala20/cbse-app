@@ -1,14 +1,44 @@
 export interface Video {
   id: string;
   title: string;
-  url: string; // YouTube video ID
+  url: string;
   duration?: string;
+}
+
+export interface Example {
+  id: string;
+  problem: string;
+  solution: string;
+}
+
+export interface PracticeProblem {
+  id: string;
+  question: string;
+  answer: string;
+  hint?: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
+export interface NCERTExercise {
+  id: string;
+  exercise: string;
+  questionNumber: number;
+  question: string;
+  solution: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+  diagram?: string;
 }
 
 export interface Concept {
   id: string;
   title: string;
   videos: Video[];
+  explanation?: string;
+  keyPoints?: string[];
+  diagrams?: string[];
+  examples?: Example[];
+  practiceProblems?: PracticeProblem[];
+  ncertExercises?: NCERTExercise[];
 }
 
 export interface Chapter {
@@ -46,94 +76,52 @@ export const syllabus: Grade[] = [
                 id: "intro-num-sys",
                 title: "Introduction to Number Systems",
                 videos: [
-                  { id: "v1", title: "Number Systems - Full Chapter Explanation", url: "IueVrMlmQ2I" }
+                  { id: "v1", title: "Number Systems - Full Chapter", url: "IueVrMlmQ2I" }
+                ],
+                explanation: "Number systems include natural numbers, whole numbers, integers, rational numbers, and irrational numbers.",
+                keyPoints: [
+                  "Natural Numbers: 1, 2, 3, ...",
+                  "Whole Numbers: 0, 1, 2, 3, ...",
+                  "Integers: ..., -2, -1, 0, 1, 2, ...",
+                  "Rational Numbers: Numbers that can be expressed as p/q where q ≠ 0",
+                  "Irrational Numbers: Numbers that cannot be expressed as p/q"
+                ],
+                examples: [
+                  {
+                    id: "ex1",
+                    problem: "Is 0 a rational number?",
+                    solution: "Yes, 0 is a rational number because it can be written as 0/1, 0/2, etc."
+                  }
+                ],
+                practiceProblems: [
+                  {
+                    id: "p1",
+                    question: "Which of the following is an irrational number: √4, √2, 0.5?",
+                    answer: "√2",
+                    hint: "Check if the number can be expressed as a fraction",
+                    difficulty: "easy"
+                  }
+                ],
+                ncertExercises: [
+                  {
+                    id: "ex1.1-q1",
+                    exercise: "Exercise 1.1",
+                    questionNumber: 1,
+                    question: "Is zero a rational number? Can you write it in the form p/q, where p and q are integers and q ≠ 0?",
+                    solution: "Yes, zero is a rational number. It can be written as 0/1, 0/2, 0/3, etc., where the numerator is 0 and denominator is any non-zero integer.",
+                    difficulty: "easy"
+                  },
+                  {
+                    id: "ex1.1-q2",
+                    exercise: "Exercise 1.1",
+                    questionNumber: 2,
+                    question: "Find six rational numbers between 3 and 4.",
+                    solution: "Six rational numbers between 3 and 4 are: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6 (or 31/10, 32/10, 33/10, 34/10, 35/10, 36/10)",
+                    difficulty: "easy"
+                  }
                 ]
-              },
-              {
-                id: "irrational-nums",
-                title: "Irrational Numbers",
-                videos: [
-                  { id: "v2", title: "Irrational Numbers Explained", url: "1N-mG0lTf6I" }
-                ]
-              },
-              {
-                id: "real-nums",
-                title: "Real Numbers & Decimal Expansions",
-                videos: []
-              },
-              {
-                id: "ops-real-nums",
-                title: "Operations on Real Numbers",
-                videos: []
-              },
-              {
-                id: "exponents",
-                title: "Laws of Exponents",
-                videos: []
               }
             ]
-          },
-          {
-            id: "polynomials",
-            title: "Chapter 2: Polynomials",
-            concepts: [
-              { id: "poly-intro", title: "Introduction to Polynomials", videos: [] },
-              { id: "zeros", title: "Zeroes of a Polynomial", videos: [] },
-              { id: "factorisation", title: "Factorisation of Polynomials", videos: [] },
-              { id: "identities", title: "Algebraic Identities", videos: [] }
-            ]
-          },
-          {
-            id: "coord-geo",
-            title: "Chapter 3: Coordinate Geometry",
-            concepts: [
-              { id: "cartesian", title: "Cartesian System", videos: [] }
-            ]
-          },
-          {
-            id: "linear-eq",
-            title: "Chapter 4: Linear Equations in Two Variables",
-            concepts: []
-          },
-          {
-            id: "euclid",
-            title: "Chapter 5: Introduction to Euclid's Geometry",
-            concepts: []
-          },
-          {
-            id: "lines-angles",
-            title: "Chapter 6: Lines and Angles",
-            concepts: []
-          },
-          {
-            id: "triangles",
-            title: "Chapter 7: Triangles",
-            concepts: []
-          },
-          {
-            id: "quadrilaterals",
-            title: "Chapter 8: Quadrilaterals",
-            concepts: []
-          },
-          {
-            id: "circles",
-            title: "Chapter 9: Circles",
-            concepts: []
-          },
-          {
-            id: "heron",
-            title: "Chapter 10: Heron's Formula",
-            concepts: []
-          },
-          {
-            id: "surface-area",
-            title: "Chapter 11: Surface Areas and Volumes",
-            concepts: []
-          },
-          {
-            id: "stats",
-            title: "Chapter 12: Statistics",
-            concepts: []
           }
         ]
       },
@@ -146,70 +134,53 @@ export const syllabus: Grade[] = [
             title: "Chapter 1: Matter in Our Surroundings",
             concepts: [
               {
-                id: "matter-nature",
-                title: "Physical Nature of Matter",
+                id: "matter-intro",
+                title: "Characteristics of Particles of Matter",
                 videos: [
-                  { id: "v3", title: "Matter in Our Surroundings - Full Chapter (One Shot)", url: "FkuQHxIZNFs" }
+                  { id: "v1", title: "Matter in Our Surroundings", url: "dQw4w9WgXcQ" }
+                ],
+                explanation: "Matter is anything that has mass and occupies space. All matter is made up of tiny particles.",
+                keyPoints: [
+                  "Particles of matter have space between them",
+                  "Particles of matter are continuously moving",
+                  "Particles of matter attract each other"
+                ],
+                examples: [
+                  {
+                    id: "ex1",
+                    problem: "Why does the smell of hot food reach us several meters away?",
+                    solution: "Particles of hot food have higher kinetic energy and diffuse faster into air, reaching us quickly."
+                  }
+                ],
+                practiceProblems: [
+                  {
+                    id: "p1",
+                    question: "Which of the following is matter: Chair, Air, Love?",
+                    answer: "Chair and Air",
+                    hint: "Matter must have mass and occupy space",
+                    difficulty: "easy"
+                  }
+                ],
+                ncertExercises: [
+                  {
+                    id: "ex1.1-q1",
+                    exercise: "Exercise 1.1",
+                    questionNumber: 1,
+                    question: "Which of the following are matter? Chair, air, love, smell, hate, almonds, thought, cold, lemon water, smell of perfume.",
+                    solution: "Matter: Chair, air, almonds, lemon water, smell of perfume (due to particles).",
+                    difficulty: "easy"
+                  },
+                  {
+                    id: "ex1.1-q2",
+                    exercise: "Exercise 1.1",
+                    questionNumber: 2,
+                    question: "Give reasons: The smell of hot sizzling food reaches you several meters away, but to get the smell from cold food you have to go close.",
+                    solution: "Particles of hot food have higher kinetic energy and diffuse faster into air than particles of cold food.",
+                    difficulty: "medium"
+                  }
                 ]
-              },
-              { id: "states", title: "States of Matter", videos: [] },
-              { id: "evap", title: "Evaporation", videos: [] }
+              }
             ]
-          },
-          {
-            id: "matter-pure",
-            title: "Chapter 2: Is Matter Around Us Pure",
-            concepts: []
-          },
-          {
-            id: "atoms-mols",
-            title: "Chapter 3: Atoms and Molecules",
-            concepts: []
-          },
-          {
-            id: "structure-atom",
-            title: "Chapter 4: Structure of the Atom",
-            concepts: []
-          },
-          {
-            id: "life-unit",
-            title: "Chapter 5: The Fundamental Unit of Life",
-            concepts: []
-          },
-          {
-            id: "tissues",
-            title: "Chapter 6: Tissues",
-            concepts: []
-          },
-          {
-            id: "motion",
-            title: "Chapter 7: Motion",
-            concepts: []
-          },
-          {
-            id: "force",
-            title: "Chapter 8: Force and Laws of Motion",
-            concepts: []
-          },
-          {
-            id: "gravitation",
-            title: "Chapter 9: Gravitation",
-            concepts: []
-          },
-          {
-            id: "work-energy",
-            title: "Chapter 10: Work and Energy",
-            concepts: []
-          },
-          {
-            id: "sound",
-            title: "Chapter 11: Sound",
-            concepts: []
-          },
-          {
-            id: "food-resources",
-            title: "Chapter 12: Improvement in Food Resources",
-            concepts: []
           }
         ]
       }
