@@ -17,7 +17,29 @@ export const chapter7: Chapter = {
                 "Uniform motion: Equal distances in equal time intervals",
                 "Non-uniform motion: Unequal distances in equal time intervals"
             ],
-            diagrams: ["diagrams/science_ch7_distance_displacement.png"],
+            practiceProblems: [
+                {
+                    id: "p1",
+                    question: "A person walks 4 km east, then 3 km north. What is the total distance and displacement?",
+                    answer: "Distance = 7 km, Displacement = 5 km (using Pythagoras)",
+                    hint: "Distance is total path, displacement is straight line from start to end",
+                    difficulty: "medium"
+                },
+                {
+                    id: "p2",
+                    question: "Can displacement be greater than distance? Why?",
+                    answer: "No, displacement can never be greater than distance. Displacement is the shortest path while distance is the actual path traveled.",
+                    hint: "Think about shortest vs actual path",
+                    difficulty: "easy"
+                },
+                {
+                    id: "p3",
+                    question: "A car travels at 60 km/h for 2 hours. Find the distance covered.",
+                    answer: "120 km",
+                    hint: "Distance = Speed × Time",
+                    difficulty: "easy"
+                }
+            ],
             examples: [
                 {
                     id: "ex1",
@@ -58,7 +80,29 @@ export const chapter7: Chapter = {
                 "Third equation: v² = u² + 2as",
                 "Where: u = initial velocity, v = final velocity, a = acceleration, s = displacement, t = time"
             ],
-            diagrams: ["diagrams/science_ch7_equations_of_motion.png"],
+            practiceProblems: [
+                {
+                    id: "p1",
+                    question: "A car starts from rest and accelerates at 2 m/s² for 5 seconds. Find final velocity.",
+                    answer: "10 m/s",
+                    hint: "Use v = u + at, where u = 0",
+                    difficulty: "easy"
+                },
+                {
+                    id: "p2",
+                    question: "An object moving at 20 m/s comes to rest in 4 seconds. Find acceleration.",
+                    answer: "-5 m/s² (retardation)",
+                    hint: "a = (v - u)/t, final velocity v = 0",
+                    difficulty: "medium"
+                },
+                {
+                    id: "p3",
+                    question: "A ball is thrown upward with velocity 30 m/s. How high will it go? (g = 10 m/s²)",
+                    answer: "45 m",
+                    hint: "Use v² = u² + 2as, at highest point v = 0, a = -g",
+                    difficulty: "hard"
+                }
+            ],
             examples: [
                 {
                     id: "ex2",
@@ -98,7 +142,29 @@ export const chapter7: Chapter = {
                 "Area under velocity-time graph = displacement",
                 "Horizontal line in v-t graph = uniform velocity (zero acceleration)"
             ],
-            diagrams: ["diagrams/science_ch7_graphs.png", "diagrams/science_ch7_velocity_time_graph.png"],
+            practiceProblems: [
+                {
+                    id: "p1",
+                    question: "What does the slope of a distance-time graph represent?",
+                    answer: "Speed",
+                    hint: "Slope = rise/run = distance/time",
+                    difficulty: "easy"
+                },
+                {
+                    id: "p2",
+                    question: "What does the area under a velocity-time graph represent?",
+                    answer: "Displacement",
+                    hint: "Think about units: velocity × time = ?",
+                    difficulty: "medium"
+                },
+                {
+                    id: "p3",
+                    question: "A velocity-time graph shows a straight line with positive slope. What type of motion is this?",
+                    answer: "Uniformly accelerated motion",
+                    hint: "Positive slope in v-t graph means increasing velocity",
+                    difficulty: "medium"
+                }
+            ],
             examples: [
                 {
                     id: "ex3",
