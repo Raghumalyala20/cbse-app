@@ -75,9 +75,7 @@ export const syllabus: Grade[] = [
               {
                 id: "intro-num-sys",
                 title: "Introduction to Number Systems",
-                videos: [
-                  { id: "v1", title: "Number Systems - Full Chapter", url: "IueVrMlmQ2I" }
-                ],
+                videos: [{ id: "v1", title: "Number Systems - Full Chapter", url: "IueVrMlmQ2I" }],
                 explanation: "Number systems include natural numbers, whole numbers, integers, rational numbers, and irrational numbers.",
                 keyPoints: [
                   "Natural Numbers: 1, 2, 3, ...",
@@ -118,65 +116,6 @@ export const syllabus: Grade[] = [
                     question: "Find six rational numbers between 3 and 4.",
                     solution: "Six rational numbers between 3 and 4 are: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6 (or 31/10, 32/10, 33/10, 34/10, 35/10, 36/10)",
                     difficulty: "easy"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: "science",
-        title: "Science",
-        chapters: [
-          {
-            id: "matter",
-            title: "Chapter 1: Matter in Our Surroundings",
-            concepts: [
-              {
-                id: "matter-intro",
-                title: "Characteristics of Particles of Matter",
-                videos: [
-                  { id: "v1", title: "Matter in Our Surroundings", url: "dQw4w9WgXcQ" }
-                ],
-                explanation: "Matter is anything that has mass and occupies space. All matter is made up of tiny particles.",
-                keyPoints: [
-                  "Particles of matter have space between them",
-                  "Particles of matter are continuously moving",
-                  "Particles of matter attract each other"
-                ],
-                examples: [
-                  {
-                    id: "ex1",
-                    problem: "Why does the smell of hot food reach us several meters away?",
-                    solution: "Particles of hot food have higher kinetic energy and diffuse faster into air, reaching us quickly."
-                  }
-                ],
-                practiceProblems: [
-                  {
-                    id: "p1",
-                    question: "Which of the following is matter: Chair, Air, Love?",
-                    answer: "Chair and Air",
-                    hint: "Matter must have mass and occupy space",
-                    difficulty: "easy"
-                  }
-                ],
-                ncertExercises: [
-                  {
-                    id: "ex1.1-q1",
-                    exercise: "Exercise 1.1",
-                    questionNumber: 1,
-                    question: "Which of the following are matter? Chair, air, love, smell, hate, almonds, thought, cold, lemon water, smell of perfume.",
-                    solution: "Matter: Chair, air, almonds, lemon water, smell of perfume (due to particles).",
-                    difficulty: "easy"
-                  },
-                  {
-                    id: "ex1.1-q2",
-                    exercise: "Exercise 1.1",
-                    questionNumber: 2,
-                    question: "Give reasons: The smell of hot sizzling food reaches you several meters away, but to get the smell from cold food you have to go close.",
-                    solution: "Particles of hot food have higher kinetic energy and diffuse faster into air than particles of cold food.",
-                    difficulty: "medium"
                   }
                 ]
               }
