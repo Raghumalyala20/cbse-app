@@ -1,0 +1,935 @@
+// Import Math chapters
+import { chapter1 as mathCh1 } from './math/chapter1';
+import { chapter2 as mathCh2 } from './math/chapter2';
+import { chapter3 as mathCh3 } from './math/chapter3';
+import { chapter4 as mathCh4 } from './math/chapter4';
+import { chapter5 as mathCh5 } from './math/chapter5';
+import { chapter6 as mathCh6 } from './math/chapter6';
+import { chapter7 as mathCh7 } from './math/chapter7';
+
+// Import Science chapters
+import { chapter1 as sciCh1 } from './science/chapter1';
+import { chapter2 as sciCh2 } from './science/chapter2';
+import { chapter3 as sciCh3 } from './science/chapter3';
+import { chapter4 as sciCh4 } from './science/chapter4';
+import { chapter5 as sciCh5 } from './science/chapter5';
+import { chapter6 as sciCh6 } from './science/chapter6';
+import { chapter7 as sciCh7 } from './science/chapter7';
+
+export interface Video {
+  id: string;
+  title: string;
+  url: string;
+  duration?: string;
+}
+
+export interface Example {
+  id: string;
+  problem: string;
+  solution: string;
+}
+
+export interface PracticeProblem {
+  id: string;
+  question: string;
+  answer: string;
+  hint?: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
+export interface NCERTExercise {
+  id: string;
+  exercise: string;
+  questionNumber: number;
+  question: string;
+  solution: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+  diagram?: string;
+}
+
+export interface Concept {
+  id: string;
+  title: string;
+  videos: Video[];
+  explanation?: string;
+  keyPoints?: string[];
+  diagrams?: string[];
+  examples?: Example[];
+  practiceProblems?: PracticeProblem[];
+  ncertExercises?: NCERTExercise[];
+}
+
+export interface Chapter {
+  id: string;
+  title: string;
+  concepts: Concept[];
+}
+
+export interface Subject {
+  id: string;
+  title: string;
+  chapters: Chapter[];
+}
+
+export interface Grade {
+  id: string;
+  title: string;
+  subjects: Subject[];
+}
+
+export const syllabus: Grade[] = [
+  {
+    id: "class-9",
+    title: "Class 9",
+    subjects: [
+      {
+        id: "maths",
+        title: "Mathematics",
+        chapters: [
+          mathCh1,
+          mathCh2,
+          mathCh3,
+          mathCh4,
+          mathCh5,
+          mathCh6,
+          mathCh7,
+          {
+            id: "polynomials",
+            title: "Chapter 2: Polynomials",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "coord-geom",
+            title: "Chapter 3: Coordinate Geometry",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "linear-eq",
+            title: "Chapter 4: Linear Equations in Two Variables",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "euclid",
+            title: "Chapter 5: Introduction to Euclid's Geometry",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "lines-angles",
+            title: "Chapter 6: Lines and Angles",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "triangles",
+            title: "Chapter 7: Triangles",
+            concepts: [{
+              id: "wip",
+              title: "Work in Progress",
+              videos: [],
+              explanation: "This chapter content is being prepared. Please check back soon!",
+              keyPoints: ["Content coming soon"]
+            }]
+          },
+          {
+            id: "quadrilaterals",
+            title: "Chapter 8: Quadrilaterals",
+            concepts: [
+
+              {
+                id: "quad-basics",
+                title: "Properties of Quadrilaterals",
+                videos: [{ id: "v1", title: "Quadrilaterals Full Chapter", url: "dQw4w9WgXcQ" }],
+                explanation: "A quadrilateral is a closed figure with four sides. The sum of all interior angles is 360°.",
+                keyPoints: [
+                  "Sum of angles = 360°",
+                  "Parallelogram: Opposite sides parallel and equal",
+                  "Rectangle: All angles 90°, opposite sides equal",
+                  "Square: All sides equal, all angles 90°",
+                  "Rhombus: All sides equal, opposite angles equal",
+                  "Trapezium: One pair of opposite sides parallel"
+                ],
+                examples: [
+                  {
+                    id: "ex1",
+                    problem: "Find the fourth angle of a quadrilateral if three angles are 80°, 90°, and 100°.",
+                    solution: "Sum of angles = 360°. Fourth angle = 360° - (80° + 90° + 100°) = 360° - 270° = 90°"
+                  }
+                ],
+                ncertExercises: [
+                  {
+                    id: "ex8.1-q1",
+                    exercise: "Exercise 8.1",
+                    questionNumber: 1,
+                    question: "The angles of a quadrilateral are in the ratio 3:5:9:13. Find all the angles.",
+                    solution: "Let angles be 3x, 5x, 9x, 13x\\nSum = 360°\\n3x + 5x + 9x + 13x = 360°\\n30x = 360°\\nx = 12°\\nAngles are: 36°, 60°, 108°, 156°",
+                    difficulty: "medium"
+                  },
+                  {
+                    id: "ex8.1-q2",
+                    exercise: "Exercise 8.1",
+                    questionNumber: 2,
+                    question: "If the diagonals of a parallelogram are equal, then show that it is a rectangle.",
+                    solution: "In a parallelogram, if diagonals are equal, opposite sides are equal and parallel. Equal diagonals imply all angles are 90°, making it a rectangle.",
+                    difficulty: "hard"
+                  },
+                  {
+                    id: "ex8.1-q3",
+                    exercise: "Exercise 8.1",
+                    questionNumber: 3,
+                    question: "Show that the diagonals of a square are equal and bisect each other at right angles.",
+                    solution: "In a square, all sides are equal. By Pythagoras theorem, both diagonals have the same length. They bisect each other at 90° due to symmetry.",
+                    difficulty: "medium"
+                  },
+                  {
+                    id: "ex8.2-q1",
+                    exercise: "Exercise 8.2",
+                    questionNumber: 1,
+                    question: "ABCD is a quadrilateral in which P, Q, R and S are mid-points of the sides AB, BC, CD and DA. Show that PQRS is a parallelogram.",
+                    solution: "By mid-point theorem, PQ || AC and PQ = ½AC. Similarly, SR || AC and SR = ½AC. Therefore PQ || SR and PQ = SR, making PQRS a parallelogram.",
+                    difficulty: "hard"
+                  },
+                  {
+                    id: "ex8.2-q2",
+                    exercise: "Exercise 8.2",
+                    questionNumber: 2,
+                    question: "Show that if the diagonals of a quadrilateral bisect each other, then it is a parallelogram.",
+                    solution: "If diagonals bisect each other, triangles formed are congruent (SAS). This proves opposite sides are equal and parallel, making it a parallelogram.",
+                    difficulty: "hard"
+                  }
+                ]
+              },
+              // Additional quadrilateral type concepts
+              {
+                id: "square",
+                title: "Square",
+                videos: [],
+                explanation: "A square is a quadrilateral with all sides equal and all angles 90°.",
+                keyPoints: ["All sides equal", "All angles 90°", "Diagonals are equal and bisect each other at right angles"],
+                examples: [{
+                  explanation: "A rectangle is a quadrilateral with opposite sides equal and all angles 90°.",
+                  keyPoints: ["Opposite sides equal", "All angles 90°", "Diagonals are equal"],
+                  examples: [{
+                    id: "ex-rect-1",
+                    problem: "Calculate the area of a rectangle 8 cm by 5 cm.",
+                    solution: "Area = 8 × 5 = 40 cm²."
+                  }],
+                  ncertExercises: [],
+                  diagrams: ["diagrams/quadrilateral_rectangle.png"]
+                },
+                {
+                  id: "rhombus",
+                  title: "Rhombus",
+                  videos: [],
+                  explanation: "A rhombus is a quadrilateral with all sides equal but angles not necessarily 90°.",
+                  keyPoints: ["All sides equal", "Opposite angles equal", "Diagonals bisect each other at right angles"],
+                  examples: [{
+                    id: "ex-rhombus-1",
+                    problem: "If a rhombus has side 6 cm and one interior angle 60°, find its area.",
+                    solution: "Area = side² × sin(60°) = 36 × √3/2 = 18√3 cm²."
+                  }],
+                  ncertExercises: [],
+                  diagrams: ["diagrams/quadrilateral_rhombus.png"]
+                },
+                {
+                  id: "parallelogram",
+                  title: "Parallelogram",
+                  videos: [],
+                  explanation: "A parallelogram is a quadrilateral with opposite sides parallel and equal.",
+                  keyPoints: ["Opposite sides parallel", "Opposite sides equal", "Opposite angles equal"],
+                  examples: [{
+                    id: "ex-para-1",
+                    problem: "Show that the opposite angles of a parallelogram are equal.",
+                    solution: "By parallel line properties, interior alternate angles are equal, giving opposite angles equality."
+                  }],
+                  ncertExercises: [],
+                  diagrams: ["diagrams/quadrilateral_parallelogram.png"]
+                },
+                {
+                  id: "trapezium",
+                  title: "Trapezium",
+                  videos: [],
+                  explanation: "A trapezium (US: trapezoid) is a quadrilateral with at least one pair of parallel sides.",
+                  keyPoints: ["One pair of opposite sides parallel", "Non‑parallel sides called legs"],
+                  examples: [{
+                    id: "ex-trap-1",
+                    problem: "Find the area of a trapezium with parallel sides 8 cm and 5 cm, and height 4 cm.",
+                    solution: "Area = ½ × (8 + 5) × 4 = 26 cm²."
+                  }],
+                  ncertExercises: [],
+                  diagrams: ["diagrams/quadrilateral_trapezium.png"]
+                }
+                ]
+
+              },
+              {
+                id: "circles",
+                title: "Chapter 9: Circles",
+                concepts: [
+                  {
+                    id: "circle-basics",
+                    title: "Circles and their Properties",
+                    videos: [{ id: "v1", title: "Circles Full Chapter", url: "dQw4w9WgXcQ" }],
+                    explanation: "A circle is the locus of all points equidistant from a fixed point called the center.",
+                    keyPoints: [
+                      "Radius: Distance from center to any point on circle",
+                      "Diameter = 2 × Radius",
+                      "Chord: Line segment joining two points on circle",
+                      "Equal chords are equidistant from center",
+                      "Perpendicular from center to chord bisects the chord",
+                      "Angle in a semicircle is 90°",
+                      "Angles in the same segment are equal"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "If radius of a circle is 5 cm, find the length of a chord that is 3 cm from the center.",
+                        solution: "Using Pythagoras: chord/2 = √(5² - 3²) = √(25-9) = 4 cm. Chord length = 8 cm"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex9.1-q1",
+                        exercise: "Exercise 9.1",
+                        questionNumber: 1,
+                        question: "Fill in the blanks: The center of a circle lies in _____ of the circle.",
+                        solution: "The center of a circle lies in **interior** of the circle.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex9.1-q2",
+                        exercise: "Exercise 9.1",
+                        questionNumber: 2,
+                        question: "A point whose distance from the center of a circle is greater than its radius lies in _____ of the circle.",
+                        solution: "A point whose distance from the center is greater than radius lies in **exterior** of the circle.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex9.2-q1",
+                        exercise: "Exercise 9.2",
+                        questionNumber: 1,
+                        question: "Two circles of radii 5 cm and 3 cm intersect at two points and the distance between their centers is 4 cm. Find the length of the common chord.",
+                        solution: "Let the common chord be AB. Using Pythagoras in both triangles formed: h² + (AB/2)² = 5² and h² + (AB/2)² = 3² where h is perpendicular distance. Solving: AB = 2√(25-h²) = 2√(9-(4-h)²). After calculation, AB = 6 cm",
+                        difficulty: "hard"
+                      },
+                      {
+                        id: "ex9.3-q1",
+                        exercise: "Exercise 9.3",
+                        questionNumber: 1,
+                        question: "If two equal chords of a circle intersect within the circle, prove that the segments of one chord are equal to corresponding segments of the other chord.",
+                        solution: "Let AB and CD be equal chords intersecting at P. Draw perpendiculars from center O to both chords. Since chords are equal, perpendiculars are equal. Using congruent triangles, AP = CP and BP = DP.",
+                        difficulty: "hard"
+                      },
+                      {
+                        id: "ex9.3-q2",
+                        exercise: "Exercise 9.3",
+                        questionNumber: 2,
+                        question: "Prove that the angle subtended by an arc at the center is double the angle subtended by it at any point on the remaining part of the circle.",
+                        solution: "Let arc AB subtend ∠AOB at center and ∠ACB at point C on circle. Draw OC. In △OAC, OA = OC (radii), so ∠OAC = ∠OCA. Similarly in △OBC. Using exterior angle theorem: ∠AOB = 2∠ACB",
+                        difficulty: "hard"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "heron",
+                title: "Chapter 10: Heron's Formula",
+                concepts: [
+                  {
+                    id: "heron-formula",
+                    title: "Area using Heron's Formula",
+                    videos: [{ id: "v1", title: "Heron's Formula", url: "dQw4w9WgXcQ" }],
+                    explanation: "Heron's formula is used to find the area of a triangle when all three sides are known.",
+                    keyPoints: [
+                      "Semi-perimeter s = (a + b + c)/2",
+                      "Area = √[s(s-a)(s-b)(s-c)]",
+                      "Useful when height is not given",
+                      "Can be applied to quadrilaterals by dividing into triangles"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Find area of triangle with sides 5cm, 6cm, 7cm",
+                        solution: "s = (5+6+7)/2 = 9\\nArea = √[9(9-5)(9-6)(9-7)] = √[9×4×3×2] = √216 = 6√6 cm²"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex10.1-q1",
+                        exercise: "Exercise 10.1",
+                        questionNumber: 1,
+                        question: "Find the area of a triangle with sides 3cm, 4cm, and 5cm using Heron's formula.",
+                        solution: "s = (3+4+5)/2 = 6\\nArea = √[6(6-3)(6-4)(6-5)] = √[6×3×2×1] = √36 = 6 cm²",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex10.1-q2",
+                        exercise: "Exercise 10.1",
+                        questionNumber: 2,
+                        question: "Find the area of an equilateral triangle of side 10 cm.",
+                        solution: "For equilateral triangle: s = (10+10+10)/2 = 15\\nArea = √[15(15-10)(15-10)(15-10)] = √[15×5×5×5] = 25√3 cm²",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex10.2-q1",
+                        exercise: "Exercise 10.2",
+                        questionNumber: 1,
+                        question: "A park in the shape of a quadrilateral ABCD has ∠C = 90°, AB = 9m, BC = 12m, CD = 5m and AD = 8m. Find its area.",
+                        solution: "Divide into triangles ABC and ACD. In △ABC (right-angled): Area = ½×12×9 = 54 m². For △ACD, find AC using Pythagoras in △ABC: AC = 15m. Then use Heron's formula for △ACD with sides 15, 5, 8. Total area = 54 + 20 = 74 m²",
+                        difficulty: "hard"
+                      },
+                      {
+                        id: "ex10.2-q2",
+                        exercise: "Exercise 10.2",
+                        questionNumber: 2,
+                        question: "The sides of a triangular field are 51m, 37m and 20m. Find the number of flower beds that can be prepared if each bed needs 900 cm² space.",
+                        solution: "s = (51+37+20)/2 = 54\\nArea = √[54×3×17×34] = 306 m² = 3,060,000 cm²\\nNumber of beds = 3,060,000/900 = 3400 beds",
+                        difficulty: "medium"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "surface-areas",
+                title: "Chapter 11: Surface Areas and Volumes",
+                concepts: [
+                  {
+                    id: "sa-volumes",
+                    title: "Surface Areas and Volumes of 3D Shapes",
+                    videos: [{ id: "v1", title: "Surface Areas & Volumes", url: "dQw4w9WgXcQ" }],
+                    explanation: "Study of surface areas and volumes of cuboids, cylinders, cones, spheres and hemispheres.",
+                    keyPoints: [
+                      "Cuboid: TSA = 2(lb + bh + hl), Volume = l×b×h",
+                      "Cube: TSA = 6a², Volume = a³",
+                      "Cylinder: CSA = 2πrh, TSA = 2πr(r+h), Volume = πr²h",
+                      "Cone: CSA = πrl, TSA = πr(l+r), Volume = (1/3)πr²h",
+                      "Sphere: SA = 4πr², Volume = (4/3)πr³",
+                      "Hemisphere: CSA = 2πr², TSA = 3πr², Volume = (2/3)πr³"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Find volume of a cylinder with radius 7cm and height 10cm",
+                        solution: "Volume = πr²h = (22/7) × 7² × 10 = 1540 cm³"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex11.1-q1",
+                        exercise: "Exercise 11.1",
+                        questionNumber: 1,
+                        question: "Find the surface area of a sphere of radius 7 cm.",
+                        solution: "Surface Area = 4πr² = 4 × (22/7) × 7² = 4 × 22 × 7 = 616 cm²",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex11.2-q1",
+                        exercise: "Exercise 11.2",
+                        questionNumber: 1,
+                        question: "Find the volume of a right circular cone with radius 6 cm and height 7 cm.",
+                        solution: "Volume = (1/3)πr²h = (1/3) × (22/7) × 6² × 7 = 264 cm³",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex11.3-q1",
+                        exercise: "Exercise 11.3",
+                        questionNumber: 1,
+                        question: "A hemispherical bowl is made of steel 0.25 cm thick. The inner radius is 5 cm. Find the outer curved surface area.",
+                        solution: "Outer radius = 5 + 0.25 = 5.25 cm\\nOuter CSA = 2πr² = 2 × (22/7) × (5.25)² = 173.25 cm²",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex11.4-q1",
+                        exercise: "Exercise 11.4",
+                        questionNumber: 1,
+                        question: "A solid sphere of radius 10.5 cm is melted and recast into smaller cones of radius 3.5 cm and height 3 cm. Find the number of cones.",
+                        solution: "Volume of sphere = (4/3)πr³ = (4/3)π(10.5)³\\nVolume of one cone = (1/3)πr²h = (1/3)π(3.5)²(3)\\nNumber of cones = Volume of sphere / Volume of cone = 126 cones",
+                        difficulty: "hard"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "statistics",
+                title: "Chapter 12: Statistics",
+                concepts: [
+                  {
+                    id: "stats-basics",
+                    title: "Data Handling and Statistics",
+                    videos: [{ id: "v1", title: "Statistics Full Chapter", url: "dQw4w9WgXcQ" }],
+                    explanation: "Statistics deals with collection, organization, presentation, and interpretation of data.",
+                    keyPoints: [
+                      "Mean = Sum of observations / Number of observations",
+                      "Median: Middle value when data is arranged in order",
+                      "Mode: Most frequently occurring value",
+                      "Range = Highest value - Lowest value",
+                      "Class mark = (Upper limit + Lower limit)/2",
+                      "Frequency: Number of times a value occurs"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Find mean of 5, 8, 12, 15, 20",
+                        solution: "Mean = (5+8+12+15+20)/5 = 60/5 = 12"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex12.1-q1",
+                        exercise: "Exercise 12.1",
+                        questionNumber: 1,
+                        question: "Find the mean of: 10, 12, 14, 16, 18",
+                        solution: "Mean = (10+12+14+16+18)/5 = 70/5 = 14",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex12.2-q1",
+                        exercise: "Exercise 12.2",
+                        questionNumber: 1,
+                        question: "Find the median of: 3, 7, 5, 13, 20, 23, 39, 23, 40, 23, 14, 12, 56, 23, 29",
+                        solution: "Arrange in order: 3, 5, 7, 12, 13, 14, 20, 23, 23, 23, 23, 29, 39, 40, 56\\nMedian (8th value) = 23",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex12.3-q1",
+                        exercise: "Exercise 12.3",
+                        questionNumber: 1,
+                        question: "Find the mode of: 14, 25, 14, 28, 18, 17, 18, 14, 23, 22, 14, 18",
+                        solution: "14 appears 4 times (most frequent)\\nMode = 14",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex12.4-q1",
+                        exercise: "Exercise 12.4",
+                        questionNumber: 1,
+                        question: "The following table shows the weights of 12 students. Find the mean weight.\\nWeight (kg): 67, 70, 72, 70, 65, 70, 69, 72, 64, 63, 70, 71",
+                        solution: "Sum = 67+70+72+70+65+70+69+72+64+63+70+71 = 823\\nMean = 823/12 = 68.58 kg",
+                        difficulty: "medium"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: "science",
+            title: "Science",
+            chapters: [
+              {
+                id: "matter",
+                title: "Chapter 1: Matter in Our Surroundings",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "pure-matter",
+                title: "Chapter 2: Is Matter Around Us Pure",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "atoms",
+                title: "Chapter 3: Atoms and Molecules",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "atom-structure",
+                title: "Chapter 4: Structure of the Atom",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "cell",
+                title: "Chapter 5: The Fundamental Unit of Life",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "tissues",
+                title: "Chapter 6: Tissues",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "motion",
+                title: "Chapter 7: Motion",
+                concepts: [{
+                  id: "wip",
+                  title: "Work in Progress",
+                  videos: [],
+                  explanation: "This chapter content is being prepared. Please check back soon!",
+                  keyPoints: ["Content coming soon"]
+                }]
+              },
+              {
+                id: "force",
+                title: "Chapter 8: Force and Laws of Motion",
+                concepts: [
+                  {
+                    id: "newtons-laws",
+                    title: "Newton's Laws of Motion",
+                    videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
+                    explanation: "Newton's three laws describe the relationship between force and motion.",
+                    keyPoints: [
+                      "First Law (Inertia): Object remains at rest or in uniform motion unless acted upon by force",
+                      "Second Law: F = ma (Force = mass × acceleration)",
+                      "Third Law: For every action, there is equal and opposite reaction",
+                      "Momentum = mass × velocity",
+                      "Impulse = Change in momentum = Force × time"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "A force of 10N acts on a mass of 2kg. Find acceleration.",
+                        solution: "F = ma\\n10 = 2 × a\\na = 5 m/s²"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex8-q1",
+                        exercise: "Exercise 8",
+                        questionNumber: 1,
+                        question: "Which of the following has more inertia: a rubber ball or a stone of the same size?",
+                        solution: "A stone has more inertia because it has more mass than a rubber ball of the same size. Inertia depends on mass.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex8-q2",
+                        exercise: "Exercise 8",
+                        questionNumber: 2,
+                        question: "In the following example, identify the number of times the velocity of the ball changes: A football player kicks a ball which hits a goal post and comes back to the player.",
+                        solution: "The velocity changes 3 times: (1) When kicked by player, (2) When it hits the goal post, (3) When caught by player",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex8-q3",
+                        exercise: "Exercise 8",
+                        questionNumber: 3,
+                        question: "An object of mass 2 kg is sliding with a constant velocity of 4 m/s on a frictionless surface. What is the force required to keep the object moving?",
+                        solution: "Zero force is required. According to Newton's first law, an object moving with constant velocity continues to move unless acted upon by an external force.",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex8-q4",
+                        exercise: "Exercise 8",
+                        questionNumber: 4,
+                        question: "A force of 5 N gives a mass m₁ an acceleration of 10 m/s² and a mass m₂ an acceleration of 20 m/s². What acceleration would it give if both masses were tied together?",
+                        solution: "m₁ = F/a₁ = 5/10 = 0.5 kg\\nm₂ = F/a₂ = 5/20 = 0.25 kg\\nTotal mass = 0.75 kg\\nAcceleration = F/(m₁+m₂) = 5/0.75 = 6.67 m/s²",
+                        difficulty: "hard"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "gravitation",
+                title: "Chapter 9: Gravitation",
+                concepts: [
+                  {
+                    id: "gravity",
+                    title: "Universal Law of Gravitation",
+                    videos: [{ id: "v1", title: "Gravitation", url: "dQw4w9WgXcQ" }],
+                    explanation: "Every object in the universe attracts every other object with a force called gravity.",
+                    keyPoints: [
+                      "F = G(m₁m₂)/r² where G = 6.67×10⁻¹¹ Nm²/kg²",
+                      "Weight = mass × g (g = 9.8 m/s² on Earth)",
+                      "Mass is constant, weight changes with location",
+                      "Acceleration due to gravity is independent of mass",
+                      "Gravitational potential energy = mgh"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Find weight of 10kg object on Earth (g=10 m/s²)",
+                        solution: "Weight = mg = 10 × 10 = 100 N"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex9-q1",
+                        exercise: "Exercise 9",
+                        questionNumber: 1,
+                        question: "State the universal law of gravitation.",
+                        solution: "Every object in the universe attracts every other object with a force which is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. F = G(m₁m₂)/r²",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex9-q2",
+                        exercise: "Exercise 9",
+                        questionNumber: 2,
+                        question: "What do you mean by free fall?",
+                        solution: "When an object falls towards the earth under the gravitational force alone (without any other force acting on it), it is said to be in free fall. During free fall, the acceleration is equal to g (9.8 m/s²).",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex9-q3",
+                        exercise: "Exercise 9",
+                        questionNumber: 3,
+                        question: "What is the magnitude of gravitational force between Earth and a 1 kg object on its surface? (Mass of Earth = 6×10²⁴ kg, Radius = 6.4×10⁶ m)",
+                        solution: "F = G(Mm)/R² = (6.67×10⁻¹¹ × 6×10²⁴ × 1)/(6.4×10⁶)² ≈ 9.8 N",
+                        difficulty: "hard"
+                      },
+                      {
+                        id: "ex9-q4",
+                        exercise: "Exercise 9",
+                        questionNumber: 4,
+                        question: "The earth and moon attract each other. Does the earth attract the moon with a force greater, smaller or same as the force with which the moon attracts the earth?",
+                        solution: "According to Newton's third law, the earth attracts the moon with the same force as the moon attracts the earth. However, the acceleration produced is different because their masses are different.",
+                        difficulty: "medium"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "work-energy",
+                title: "Chapter 10: Work and Energy",
+                concepts: [
+                  {
+                    id: "work-energy-def",
+                    title: "Work and Energy",
+                    videos: [{ id: "v1", title: "Work and Energy", url: "dQw4w9WgXcQ" }],
+                    explanation: "Work is done when force causes displacement. Energy is the capacity to do work.",
+                    keyPoints: [
+                      "Work = Force × Displacement × cos(θ)",
+                      "Kinetic Energy = ½mv²",
+                      "Potential Energy = mgh",
+                      "Law of Conservation of Energy: Energy cannot be created or destroyed",
+                      "Power = Work/Time (measured in Watts)"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Find KE of 2kg object moving at 5 m/s",
+                        solution: "KE = ½mv² = ½ × 2 × 5² = 25 J"
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex10-q1",
+                        exercise: "Exercise 10",
+                        questionNumber: 1,
+                        question: "A force of 7 N acts on an object. The displacement is 8 m in the direction of the force. What is the work done?",
+                        solution: "Work = Force × Displacement = 7 N × 8 m = 56 J",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex10-q2",
+                        exercise: "Exercise 10",
+                        questionNumber: 2,
+                        question: "When do we say that work is done?",
+                        solution: "Work is done when: (1) A force acts on an object, and (2) The object is displaced in the direction of the force.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex10-q3",
+                        exercise: "Exercise 10",
+                        questionNumber: 3,
+                        question: "Write an expression for the kinetic energy of an object.",
+                        solution: "Kinetic Energy (KE) = ½mv² where m is mass and v is velocity.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex10-q4",
+                        exercise: "Exercise 10",
+                        questionNumber: 4,
+                        question: "The KE of an object of mass m moving with velocity 5 m/s is 25 J. What will be its KE when velocity is doubled? When tripled?",
+                        solution: "When velocity is doubled: KE = ½m(2v)² = 4×½mv² = 4×25 = 100 J\\nWhen velocity is tripled: KE = ½m(3v)² = 9×½mv² = 9×25 = 225 J",
+                        difficulty: "medium"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "sound",
+                title: "Chapter 11: Sound",
+                concepts: [
+                  {
+                    id: "sound-waves",
+                    title: "Production and Propagation of Sound",
+                    videos: [{ id: "v1", title: "Sound", url: "dQw4w9WgXcQ" }],
+                    explanation: "Sound is produced by vibrating objects and travels as a wave through a medium.",
+                    keyPoints: [
+                      "Sound is a mechanical wave (needs medium)",
+                      "Speed: Fastest in solids, slowest in gases",
+                      "Frequency: Number of vibrations per second (Hz)",
+                      "Audible range: 20 Hz to 20,000 Hz",
+                      "Ultrasound: Above 20,000 Hz",
+                      "Infrasound: Below 20 Hz",
+                      "Echo: Reflection of sound"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Why can't we hear sound on the moon?",
+                        solution: "Moon has no atmosphere (vacuum). Sound needs a medium to travel."
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex11-q1",
+                        exercise: "Exercise 11",
+                        questionNumber: 1,
+                        question: "What is sound and how is it produced?",
+                        solution: "Sound is a form of energy that produces sensation of hearing. It is produced by vibrating objects.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex11-q2",
+                        exercise: "Exercise 11",
+                        questionNumber: 2,
+                        question: "Why is sound wave called a longitudinal wave?",
+                        solution: "Sound wave is called longitudinal because particles of the medium vibrate parallel to the direction of wave propagation.",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex11-q3",
+                        exercise: "Exercise 11",
+                        questionNumber: 3,
+                        question: "Which characteristic of sound helps you identify your friend's voice in a dark room?",
+                        solution: "Quality or timbre of sound. Every person has a unique voice quality due to different combinations of frequencies.",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex11-q4",
+                        exercise: "Exercise 11",
+                        questionNumber: 4,
+                        question: "What is the audible range of the average human ear?",
+                        solution: "20 Hz to 20,000 Hz (20 kHz). Sounds below 20 Hz are infrasonic, above 20,000 Hz are ultrasonic.",
+                        difficulty: "easy"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "food-resources",
+                title: "Chapter 12: Improvement in Food Resources",
+                concepts: [
+                  {
+                    id: "crop-production",
+                    title: "Improvement in Crop Yields",
+                    videos: [{ id: "v1", title: "Food Resources", url: "dQw4w9WgXcQ" }],
+                    explanation: "To feed growing population, we need to improve crop production through better varieties, irrigation, and pest control.",
+                    keyPoints: [
+                      "Crop Variety Improvement: Selecting seeds with desirable traits",
+                      "Manure: Organic matter (compost, animal waste)",
+                      "Fertilizers: NPK (Nitrogen, Phosphorus, Potassium)",
+                      "Irrigation: Providing water to crops",
+                      "Crop Rotation: Maintains soil fertility",
+                      "Mixed Cropping: Growing two or more crops together",
+                      "Intercropping: Growing crops in alternate rows"
+                    ],
+                    examples: [
+                      {
+                        id: "ex1",
+                        problem: "Why is crop rotation beneficial?",
+                        solution: "It prevents soil depletion, reduces pests and diseases, and improves soil fertility by alternating nutrient requirements."
+                      }
+                    ],
+                    ncertExercises: [
+                      {
+                        id: "ex12-q1",
+                        exercise: "Exercise 12",
+                        questionNumber: 1,
+                        question: "What do we get from cereals, pulses, fruits and vegetables?",
+                        solution: "Cereals provide carbohydrates for energy. Pulses give proteins. Fruits and vegetables provide vitamins, minerals, and dietary fiber.",
+                        difficulty: "easy"
+                      },
+                      {
+                        id: "ex12-q2",
+                        exercise: "Exercise 12",
+                        questionNumber: 2,
+                        question: "How do biotic and abiotic factors affect crop production?",
+                        solution: "Biotic factors (pests, insects, fungi, bacteria, weeds) damage crops and reduce yield. Abiotic factors (temperature, rainfall, humidity, soil nutrients) affect plant growth. Both need proper management.",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex12-q3",
+                        exercise: "Exercise 12",
+                        questionNumber: 3,
+                        question: "What are macro-nutrients and why are they called macro-nutrients?",
+                        solution: "Macro-nutrients are nutrients required by plants in large quantities: Nitrogen (N), Phosphorus (P), Potassium (K), Calcium, Magnesium, and Sulphur. Called 'macro' because plants need them in relatively large amounts.",
+                        difficulty: "medium"
+                      },
+                      {
+                        id: "ex12-q4",
+                        exercise: "Exercise 12",
+                        questionNumber: 4,
+                        question: "How do plants get nutrients?",
+                        solution: "Plants get nutrients from: (1) Air - Carbon and Oxygen, (2) Water - Hydrogen and Oxygen, (3) Soil - N, P, K and micronutrients absorbed by roots in dissolved form. Fertilizers and manure replenish soil nutrients.",
+                        difficulty: "medium"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ];
