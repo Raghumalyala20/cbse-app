@@ -62,27 +62,59 @@ export const AITutor: React.FC = () => {
 
     const findAnswer = (query: string): string => {
         const lowerQuery = query.toLowerCase();
-        let bestMatch = { score: 0, text: "" };
+        let bestMatch = { score: 0, text: "", title: "" };
 
-        // Simple keyword matching search
+        // Extract meaningful keywords (filter out common words)
+        const stopWords = ['what', 'is', 'the', 'a', 'an', 'how', 'why', 'when', 'where', 'can', 'you', 'tell', 'me', 'about', 'explain'];
+        const keywords = lowerQuery
+            .split(/\s+/)
+            .filter(k => k.length > 2 && !stopWords.includes(k));
+
+        // Search through syllabus
         syllabus.forEach(grade => {
             grade.subjects.forEach(subject => {
                 subject.chapters.forEach(chapter => {
                     chapter.concepts.forEach(concept => {
                         let score = 0;
-                        const content = `${concept.title} ${concept.explanation} ${concept.keyPoints?.join(' ')}`.toLowerCase();
+                        const title = concept.title.toLowerCase();
+                        const explanation = (concept.explanation || '').toLowerCase();
+                        const keyPoints = (concept.keyPoints || []).join(' ').toLowerCase();
+                        const allContent = `${title} ${explanation} ${keyPoints}`;
 
-                        // Check for keyword matches
-                        const keywords = lowerQuery.split(' ').filter(k => k.length > 3);
+                        // Score based on keyword matches
                         keywords.forEach(keyword => {
-                            if (content.includes(keyword)) score += 1;
-                            if (concept.title.toLowerCase().includes(keyword)) score += 2; // Bonus for title match
+                            // Exact title match gets highest score
+                            if (title === keyword || title.includes(keyword)) {
+                                score += 10;
+                            }
+                            // Title contains keyword
+                            else if (title.includes(keyword)) {
+                                score += 5;
+                            }
+                            // Explanation contains keyword
+                            if (explanation.includes(keyword)) {
+                                score += 3;
+                            }
+                            // Key points contain keyword
+                            if (keyPoints.includes(keyword)) {
+                                score += 2;
+                            }
                         });
 
+                        // Bonus for multiple keyword matches
+                        const matchCount = keywords.filter(k => allContent.includes(k)).length;
+                        score += matchCount * 2;
+
+                        // Update best match if this is better
                         if (score > bestMatch.score) {
+                            const responseText = concept.explanation
+                                ? `${concept.explanation}\n\n**Key Points:**\n${(concept.keyPoints || []).slice(0, 3).map(p => `• ${p}`).join('\n')}`
+                                : concept.keyPoints?.[0] || 'No detailed explanation available.';
+
                             bestMatch = {
                                 score,
-                                text: `**${concept.title}**\n\n${concept.explanation}\n\n*Key Point:* ${concept.keyPoints?.[0] || ''}`
+                                text: responseText,
+                                title: concept.title
                             };
                         }
                     });
@@ -91,9 +123,9 @@ export const AITutor: React.FC = () => {
         });
 
         if (bestMatch.score > 0) {
-            return bestMatch.text;
+            return `**${bestMatch.title}**\n\n${bestMatch.text}`;
         } else {
-            return "I couldn't find that exact topic in your syllabus. Try asking about 'circles', 'motion', or 'atoms'.";
+            return "I couldn't find that topic in your syllabus. Try asking about specific topics like:\n• Circles\n• Newton's Laws\n• Heron's Formula\n• Atoms and Molecules\n• Gravitation";
         }
     };
 
