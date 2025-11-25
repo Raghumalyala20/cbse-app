@@ -19,6 +19,7 @@ export const chapter9Enhanced: Chapter = {
                 "Angles in the same segment are equal",
                 "Cyclic quadrilateral: opposite angles sum to 180°"
             ],
+            diagrams: ["/diagrams/circle_parts.png", "/diagrams/chord_bisection.png", "/diagrams/equal_chords.png"],
             examples: [
                 {
                     id: "ex1",

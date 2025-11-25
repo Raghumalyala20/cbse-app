@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" width="400" height="350">
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Chord Properties</text>
+  
+  <!-- Circle -->
+  <circle cx="200" cy="180" r="100" fill="none" stroke="#2563eb" stroke-width="2"/>
+  
+  <!-- Center -->
+  <circle cx="200" cy="180" r="3" fill="#dc2626"/>
+  <text x="205" y="175" font-size="12" font-weight="bold" fill="#dc2626">O</text>
+  
+  <!-- Chord AB -->
+  <line x1="140" y1="120" x2="260" y2="120" stroke="#8b5cf6" stroke-width="2"/>
+  <circle cx="140" cy="120" r="3" fill="#8b5cf6"/>
+  <circle cx="260" cy="120" r="3" fill="#8b5cf6"/>
+  <text x="130" y="115" font-size="13" font-weight="bold" fill="#8b5cf6">A</text>
+  <text x="265" y="115" font-size="13" font-weight="bold" fill="#8b5cf6">B</text>
+  
+  <!-- Perpendicular from center to chord -->
+  <line x1="200" y1="180" x2="200" y2="120" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3"/>
+  <circle cx="200" cy="120" r="3" fill="#10b981"/>
+  <text x="205" y="150" font-size="12" fill="#10b981">OM ⊥ AB</text>
+  <text x="205" y="115" font-size="12" font-weight="bold" fill="#10b981">M</text>
+  
+  <!-- Right angle symbol -->
+  <path d="M 195 120 L 195 125 L 200 125" fill="none" stroke="#10b981" stroke-width="1"/>
+  
+  <!-- Distance markers -->
+  <line x1="140" y1="130" x2="200" y2="130" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="200" y1="130" x2="260" y2="130" stroke="#f59e0b" stroke-width="1"/>
+  <text x="165" y="145" font-size="11" fill="#f59e0b">AM</text>
+  <text x="225" y="145" font-size="11" fill="#f59e0b">MB</text>
+  
+  <!-- Property box -->
+  <rect x="20" y="300" width="360" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="1" rx="5"/>
+  <text x="30" y="318" font-size="13" font-weight="bold" fill="#1e40af">Property:</text>
+  <text x="30" y="333" font-size="12" fill="#1e3a8a">Perpendicular from center to chord bisects the chord (AM = MB)</text>
+</svg>
