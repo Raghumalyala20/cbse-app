@@ -17,6 +17,7 @@ export const chapter8Enhanced: Chapter = {
                 "Impulse = Change in momentum = Force × time",
                 "Conservation of momentum: Total momentum before = Total momentum after (in isolated system)"
             ],
+            diagrams: ["/diagrams/newtons_laws.png", "/diagrams/force_formula.png"],
             examples: [
                 {
                     id: "ex1",
