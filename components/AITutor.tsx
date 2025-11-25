@@ -129,19 +129,62 @@ export const AITutor: React.FC = () => {
         }
     };
 
-    const handleSend = (text: string = inputValue) => {
+    const handleSend = async (text: string = inputValue) => {
         if (!text.trim()) return;
 
         const userMsg: Message = { id: Date.now().toString(), role: 'user', text: text };
         setMessages(prev => [...prev, userMsg]);
         setInputValue("");
 
-        // Simulate thinking delay
-        setTimeout(() => {
-            const answer = findAnswer(userMsg.text);
-            const botMsg: Message = { id: (Date.now() + 1).toString(), role: 'bot', text: answer };
+        // Show thinking message
+        const thinkingMsg: Message = { id: 'thinking', role: 'bot', text: '🤔 Thinking...' };
+        setMessages(prev => [...prev, thinkingMsg]);
+
+        try {
+            // Try Gemini API first
+            const syllabusContext = JSON.stringify(syllabus).slice(0, 3000); // Send limited context
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: text, syllabusContext })
+            });
+
+            const data = await response.json();
+
+            // Remove thinking message
+            setMessages(prev => prev.filter(m => m.id !== 'thinking'));
+
+            if (data.useFallback || data.error) {
+                // Use keyword search fallback
+                const answer = findAnswer(text);
+                const botMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    role: 'bot',
+                    text: answer + '\n\n_Using offline search (API unavailable)_'
+                };
+                setMessages(prev => [...prev, botMsg]);
+            } else {
+                // Use AI response
+                const botMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    role: 'bot',
+                    text: data.answer + '\n\n_✨ Powered by AI_'
+                };
+                setMessages(prev => [...prev, botMsg]);
+            }
+        } catch (error) {
+            // Remove thinking message
+            setMessages(prev => prev.filter(m => m.id !== 'thinking'));
+
+            // Fallback to keyword search on error
+            const answer = findAnswer(text);
+            const botMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'bot',
+                text: answer + '\n\n_Using offline search (connection error)_'
+            };
             setMessages(prev => [...prev, botMsg]);
-        }, 600);
+        }
     };
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
