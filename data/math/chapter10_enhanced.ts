@@ -17,6 +17,7 @@ export const chapter10Enhanced: Chapter = {
                 "Works for all types of triangles",
                 "Named after Hero of Alexandria"
             ],
+            diagrams: ["/diagrams/herons_formula.png", "/diagrams/herons_example.png"],
             examples: [
                 {
                     id: "ex1",
