@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Mic } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Mic, Volume2 } from 'lucide-react';
 import { syllabus } from '../data/syllabus';
 import { TextToSpeech } from './TextToSpeech';
 
@@ -24,6 +24,7 @@ export const AITutor: React.FC = () => {
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isListening, setIsListening] = useState(false);
+    const [autoSpeak, setAutoSpeak] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
@@ -141,12 +142,20 @@ export const AITutor: React.FC = () => {
         setMessages(prev => [...prev, thinkingMsg]);
 
         try {
+            // Prepare history for Gemini (map 'bot' to 'model')
+            const history = messages
+                .filter(m => m.id !== 'welcome' && m.id !== 'thinking') // Skip welcome and thinking messages
+                .map(m => ({
+                    role: m.role === 'bot' ? 'model' : 'user',
+                    parts: [{ text: m.text }]
+                }));
+
             // Try Gemini API first
             const syllabusContext = JSON.stringify(syllabus).slice(0, 3000); // Send limited context
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: text, syllabusContext })
+                body: JSON.stringify({ question: text, syllabusContext, history })
             });
 
             const data = await response.json();
@@ -207,14 +216,23 @@ export const AITutor: React.FC = () => {
                                 <p className="text-xs text-indigo-100">Always here to help!</p>
                             </div>
                         </div>
-                        <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded transition-colors">
-                            <X size={20} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => setAutoSpeak(!autoSpeak)}
+                                className={`p-1.5 rounded transition-colors ${autoSpeak ? 'bg-white/20 text-white' : 'text-indigo-200 hover:bg-white/10'}`}
+                                title={autoSpeak ? "Auto-read ON" : "Auto-read OFF"}
+                            >
+                                <Volume2 size={18} />
+                            </button>
+                            <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded transition-colors">
+                                <X size={20} />
+                            </button>
+                        </div>
                     </div>
 
                     {/* Messages Area */}
                     <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
-                        {messages.map((msg) => (
+                        {messages.map((msg, index) => (
                             <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                 <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-sm ${msg.role === 'user'
                                     ? 'bg-indigo-600 text-white rounded-br-none'
@@ -223,7 +241,11 @@ export const AITutor: React.FC = () => {
                                     <p className="whitespace-pre-line leading-relaxed">{msg.text}</p>
                                     {msg.role === 'bot' && (
                                         <div className="mt-2 pt-2 border-t border-slate-100 flex justify-end">
-                                            <TextToSpeech text={msg.text} size="sm" />
+                                            <TextToSpeech
+                                                text={msg.text}
+                                                size="sm"
+                                                autoPlay={autoSpeak && index === messages.length - 1}
+                                            />
                                         </div>
                                     )}
                                 </div>

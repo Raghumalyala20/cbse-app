@@ -5,19 +5,52 @@ export const chapter8Enhanced: Chapter = {
     title: "Chapter 8: Force and Laws of Motion",
     concepts: [
         {
-            id: "newtons-laws",
-            title: "Newton's Laws of Motion",
+            id: "newtons-first-law",
+            title: "Newton's First Law (Inertia)",
             videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
-            explanation: "Newton's three laws describe the relationship between force and motion. They form the foundation of classical mechanics and explain how objects move when forces act on them.",
+            explanation: "Newton's First Law states that an object remains at rest or in uniform motion in a straight line unless acted upon by an external unbalanced force. This tendency to resist change is called Inertia.",
             keyPoints: [
-                "First Law (Inertia): Object remains at rest or in uniform motion unless acted upon by external force",
-                "Second Law: F = ma (Force = mass × acceleration)",
-                "Third Law: For every action, there is equal and opposite reaction",
-                "Momentum = mass × velocity (p = mv)",
-                "Impulse = Change in momentum = Force × time",
-                "Conservation of momentum: Total momentum before = Total momentum after (in isolated system)"
+                "Inertia depends on mass (more mass = more inertia)",
+                "Objects at rest stay at rest",
+                "Objects in motion stay in motion"
             ],
-            diagrams: ["/diagrams/newtons_laws.png", "/diagrams/force_formula.png"],
+            diagrams: ["/diagrams/newtons_laws.png"]
+        },
+        {
+            id: "newtons-second-law",
+            title: "Newton's Second Law",
+            videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
+            explanation: "The rate of change of momentum of an object is proportional to the applied unbalanced force in the direction of force. Mathematically, F = ma.",
+            keyPoints: [
+                "Force = mass × acceleration (F = ma)",
+                "Greater force causes greater acceleration",
+                "Greater mass requires more force to accelerate"
+            ],
+            diagrams: ["/diagrams/force_formula.png"]
+        },
+        {
+            id: "newtons-third-law",
+            title: "Newton's Third Law",
+            videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
+            explanation: "To every action, there is always an equal and opposite reaction. These forces act on two different objects.",
+            keyPoints: [
+                "Action and reaction are equal in magnitude",
+                "They act in opposite directions",
+                "They act on different bodies (so they don't cancel each other)"
+            ],
+            diagrams: ["/diagrams/newtons_laws.png"]
+        },
+        {
+            id: "momentum",
+            title: "Momentum and Impulse",
+            videos: [{ id: "v1", title: "Force and Laws of Motion", url: "dQw4w9WgXcQ" }],
+            explanation: "Momentum is the product of mass and velocity. It represents the 'quantity of motion' in a body.",
+            keyPoints: [
+                "Momentum (p) = mass (m) × velocity (v)",
+                "SI unit: kg m/s",
+                "Impulse = Change in momentum = Force × time",
+                "Conservation of momentum: Total momentum remains constant in an isolated system"
+            ],
             examples: [
                 {
                     id: "ex1",

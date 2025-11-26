@@ -8,6 +8,7 @@ import { VideoModal } from "../components/VideoModal";
 import { ContentDisplay } from "../components/ContentDisplay";
 // Dynamic import for AITutor to avoid hydration mismatch (client-side only)
 const AITutor = dynamic(() => import('../components/AITutor').then(mod => mod.AITutor), { ssr: false });
+import { ImageSolver } from "../components/ImageSolver";
 
 import { BookOpen, ChevronRight, PlayCircle, GraduationCap } from "lucide-react";
 import clsx from "clsx";
@@ -53,7 +54,7 @@ export default function Home() {
       <header className="bg-indigo-600 text-white p-4 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center gap-3">
           <GraduationCap size={32} />
-          <h1 className="text-2xl font-bold">CBSE Learning Hub</h1>
+          <h1 className="text-2xl font-bold">Home Learning Hub</h1>
         </div>
       </header>
 
@@ -203,6 +204,11 @@ export default function Home() {
             </div>
           </div>
         )}
+
+        {/* Image Solver Section */}
+        <div className="mt-8">
+          <ImageSolver />
+        </div>
       </main>
 
       {/* Video Modal */}
@@ -214,7 +220,7 @@ export default function Home() {
         />
       )}
       <footer className="bg-slate-100 p-4 text-center text-slate-400 text-sm">
-        <p>CBSE Learning Hub • v1.3</p>
+        <p>Home Learning Hub • v1.3</p>
       </footer>
     </div>
   );

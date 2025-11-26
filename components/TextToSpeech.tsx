@@ -5,19 +5,37 @@ interface TextToSpeechProps {
     text: string;
     size?: 'sm' | 'md';
     className?: string;
+    autoPlay?: boolean;
 }
 
-export const TextToSpeech: React.FC<TextToSpeechProps> = ({ text, size = 'md', className = '' }) => {
+export const TextToSpeech: React.FC<TextToSpeechProps> = ({ text, size = 'md', className = '', autoPlay = false }) => {
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
 
+    const cleanTextForSpeech = (rawText: string): string => {
+        return rawText
+            // Remove markdown bold/italic (* or _)
+            .replace(/(\*\*|__)(.*?)\1/g, '$2')
+            .replace(/(\*|_)(.*?)\1/g, '$2')
+            // Remove markdown links [text](url) -> text
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+            // Remove headers (#)
+            .replace(/^#+\s+/gm, '')
+            // Remove emojis (broad range)
+            .replace(/[\u{1F300}-\u{1F9FF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '')
+            // Remove specific symbols that sound bad
+            .replace(/[*_`~]/g, '')
+            .trim();
+    };
+
     useEffect(() => {
         const synth = window.speechSynthesis;
+        const spokenText = cleanTextForSpeech(text);
 
         const createUtterance = () => {
-            console.log("Creating utterance for:", text.substring(0, 20) + "...");
-            const u = new SpeechSynthesisUtterance(text);
+            console.log("Creating utterance for:", spokenText.substring(0, 20) + "...");
+            const u = new SpeechSynthesisUtterance(spokenText);
             u.rate = 0.9; // Default rate
             u.pitch = 1;
 
@@ -55,12 +73,29 @@ export const TextToSpeech: React.FC<TextToSpeechProps> = ({ text, size = 'md', c
             };
 
             u.onerror = (e) => {
-                console.error("Speech synthesis error:", e);
+                // Ignore 'interrupted' or 'canceled' errors which are normal when stopping/switching
+                if (e.error === 'interrupted' || e.error === 'canceled') {
+                    console.log("Speech interrupted (normal)");
+                } else {
+                    console.error("Speech synthesis error:", e);
+                }
                 setIsSpeaking(false);
                 setIsPaused(false);
             };
 
             setUtterance(u);
+
+            // Auto-play if enabled
+            if (autoPlay) {
+                console.log("Auto-playing speech...");
+                // Small delay to ensure UI is ready and to feel natural
+                setTimeout(() => {
+                    synth.cancel(); // Cancel any previous speech
+                    synth.speak(u);
+                    setIsSpeaking(true);
+                    setIsPaused(false);
+                }, 500);
+            }
         };
 
         if (synth.getVoices().length > 0) {
@@ -76,7 +111,7 @@ export const TextToSpeech: React.FC<TextToSpeechProps> = ({ text, size = 'md', c
             synth.cancel();
             // Don't nullify onvoiceschanged globally as it might affect other components
         };
-    }, [text]);
+    }, [text, autoPlay]);
 
     const handlePlay = () => {
         console.log("Play clicked");
@@ -96,7 +131,8 @@ export const TextToSpeech: React.FC<TextToSpeechProps> = ({ text, size = 'md', c
                 setIsPaused(false);
             } else {
                 console.log("Utterance not ready, creating fallback");
-                const u = new SpeechSynthesisUtterance(text);
+                const spokenText = cleanTextForSpeech(text);
+                const u = new SpeechSynthesisUtterance(spokenText);
                 synth.speak(u);
                 setIsSpeaking(true);
                 setIsPaused(false);

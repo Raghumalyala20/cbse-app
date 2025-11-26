@@ -18,6 +18,10 @@ export const chapter8Enhanced: Chapter = {
                 "Trapezium: One pair of opposite sides parallel",
                 "Kite: Two pairs of adjacent sides equal"
             ],
+            diagrams: [
+                "/diagrams/math/chapter8/types_of_quadrilaterals.png",
+                "/diagrams/math/chapter8/angle_sum_property.png"
+            ],
             examples: [
                 {
                     id: "ex1",
