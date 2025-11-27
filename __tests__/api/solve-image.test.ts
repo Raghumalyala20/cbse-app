@@ -47,7 +47,7 @@ describe('/api/solve-image', () => {
 
         expect(response.status).toBe(200);
         expect(data.solution).toBe('This is a quadratic equation. Solution: x = 2 or x = -3');
-        expect(mockGetGenerativeModel).toHaveBeenCalledWith({ model: 'gemini-1.5-flash' });
+        expect(mockGetGenerativeModel).toHaveBeenCalledWith({ model: 'gemini-2.0-flash' });
     });
 
     it('should return error when API key is missing', async () => {
