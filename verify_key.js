@@ -23,7 +23,7 @@ async function verify() {
         console.log('Found API Key:', apiKey.substring(0, 5) + '...');
 
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
         console.log('Testing API connection...');
         const result = await model.generateContent('Hello, are you working?');
